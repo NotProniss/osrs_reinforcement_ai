@@ -1,0 +1,44 @@
+
+
+reward structure:
+
+total exp gain = +2 per exp
+total level gain = +10 per level
+death = -500
+ban = -10,000
+else = -1
+
+actions:
+
+click
+move mouse
+check exp
+check level
+
+state:
+
+screen capture = image
+current total level = int
+current total exp = int
+current mouse position = x,y coordinates
+is dead = bool
+is banned = bool
+
+
+deep q learning
+0. init Q value
+1. choose action
+2. preform action
+3. measure reward
+4. update q value
+
+bellman equation:
+
+NewQ(s,a) = Q(s,a)+Lr[R(s,a)+DrmaxQ'(s',a') - Q(s,a)]
+
+Lr = learning rate
+R = reward
+Dr = discount rate
+Q = model.predict(state0)
+Qnew = R + DR X max(Q(state1))
+loss = (Qnew - Q)^2
