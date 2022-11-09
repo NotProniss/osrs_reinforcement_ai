@@ -38,6 +38,6 @@ def leftClick():
     win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN,0,0)
     time.sleep(click_speed)
     win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP,0,0)
-    print('Left Click')
+    print(f'Left Click: {click_speed}s')
 
 #test click speed here http://instantclick.io/click-test
