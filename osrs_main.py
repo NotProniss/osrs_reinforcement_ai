@@ -4,7 +4,7 @@ from time import time
 from window_capture import WindowCapture
 from vision import ItemVision
 import pyautogui
-from click import leftClick
+from rng import NumGen
 from threading import Thread
 from detection import Detection
 
@@ -13,7 +13,7 @@ DEBUG = True
 wincap = WindowCapture('RuneLite - Too Run 2200')
 
 checking_exp = False
-
+rng = NumGen()
 # load trained model
 #cascade_skills = cv.CascadeClassifier('data/cascade/cascade.xml')
 #assert not cascade_skills.empty()
@@ -28,11 +28,11 @@ detector = Detection('images/skill_icon.jpg')
 def check_total_lvl_exp(rectangles):
     # Do actions
     if len(rectangles) > 0:
-        # Click on skills icon
+        # Click on skills icon7
         targets = vision.get_click_points(rectangles)
         target = wincap.get_screen_pos(targets[0])
-        pyautogui.moveTo(x=target[0], y=target[1], duration=0.5, tween=pyautogui.easeOutQuad) # over 1 second move start fast end slow
-        leftClick()
+        pyautogui.moveTo(x=target[0], y=target[1], duration=rng.mouseMoveSpeed(), tween=rng.tweenType()) # over norm distrib seconds move in a random method
+        rng.leftClick()
 
         sleep(5)
     global checking_exp
@@ -87,5 +87,3 @@ while True:
     #    cv.imwrite('data/negative/{}.jpg'.format(loop_time), screenshot)
 
 print('done')
-
-
