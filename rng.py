@@ -56,7 +56,7 @@ class NumGen:
         self.X = truncnorm(a=(-self.lower + self.mu) / self.sigma, b=+self.upper / self.sigma, scale=self.sigma).rvs(size=self.size)
         self.move_speed = abs(self.X)
         self.move_speed = random.choice(self.move_speed)
-        print("Mouse to target in: " + self.move_speed + "s")
+        print("Mouse to target in: " + str(self.move_speed) + "s")
         return self.move_speed
 
     def tweenType(self):
